@@ -14,13 +14,72 @@ function App() {
             color: "#48525D",
           }}
         >
-          <h3>Current/Latest game</h3>
+          {/* 
+          Current/Latest Game
+          */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <h3>Current/Latest game</h3>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              border: "2px solid #DBE9E6",
+              minHeight: "40px",
+              width: "100%",
+            }}
+          >
+            <div
+              style={{
+                fontWeight: "600",
+                width: "33%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <div>Guessed</div>
+              <div>color</div>
+            </div>
+            <div style={{ borderLeft: "1px solid" }}></div>
+            <div
+              style={{
+                fontWeight: "600",
+                width: "33%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <div>Corret</div> <div>color</div>
+            </div>
+            <div style={{ borderLeft: "1px solid" }}></div>
+            <div
+              style={{
+                fontWeight: "600",
+                width: "33%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              {" "}
+              Score
+            </div>
+          </div>
         </div>
+        {/* 
+          GUESS THE COLOR
+          */}
         <div
           style={{
             display: "flex",
             width: "100%",
-            backgroundColor: "#FEEED8",
+            backgroundColor: "white",
             flexDirection: "column",
             alignItems: "center",
           }}
@@ -97,11 +156,21 @@ function App() {
               </div>
             </div>
           </div>
-          <progress
-            value="32"
-            max="100"
-            style={{ width: "60%", marginTop: "20px" }}
-          />
+          <div
+            style={{
+              marginTop: "30px",
+              width: "60%",
+              backgroundColor: "#E5E9D6",
+            }}
+          >
+            <div
+              style={{
+                width: "10%",
+                height: "15px",
+                backgroundColor: "#8290A3",
+              }}
+            ></div>
+          </div>
           <div style={{ width: "60%" }}>
             <div
               style={{
@@ -110,7 +179,96 @@ function App() {
               }}
             >
               .
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  height: "80%",
+                }}
+              >
+                <button
+                  style={{
+                    backgroundColor: "#48525D",
+                    color: "#FFFFFF",
+                    borderRadius: "5px",
+                    height: "50px",
+                    width: "100px",
+                    cursor: "pointer",
+                  }}
+                >
+                  START
+                </button>
+              </div>
             </div>
+          </div>
+          <div
+            style={{
+              width: "60%",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <button
+              style={{
+                backgroundColor: "#FFFFFF",
+                color: "#48525D",
+                borderRadius: "5px",
+                height: "50px",
+                width: "200px",
+                cursor: "pointer",
+              }}
+            >
+              #48525D
+            </button>
+            <button
+              style={{
+                backgroundColor: "#FFFFFF",
+                color: "#48525D",
+                borderRadius: "5px",
+                height: "50px",
+                width: "200px",
+                cursor: "pointer",
+              }}
+            >
+              #48525D
+            </button>
+            <button
+              style={{
+                backgroundColor: "#FFFFFF",
+                color: "#48525D",
+                borderRadius: "5px",
+                height: "50px",
+                width: "200px",
+                cursor: "pointer",
+              }}
+            >
+              #48525D
+            </button>
+          </div>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "end",
+              height: "20%",
+              alignItems: "end",
+              marginRight: "20%",
+            }}
+          >
+            <button
+              style={{
+                backgroundColor: "#48525D",
+                color: "#FFFFFF",
+                borderRadius: "5px",
+                height: "50px",
+                width: "150px",
+                cursor: "pointer",
+              }}
+            >
+              Reset All Data
+            </button>
           </div>
         </div>
       </div>

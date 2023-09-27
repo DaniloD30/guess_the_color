@@ -6,6 +6,9 @@ function App() {
           display: "flex",
         }}
       >
+        {/* 
+          Current/Latest Game
+          */}
         <div
           style={{
             backgroundColor: "#ECEFF5",
@@ -14,9 +17,6 @@ function App() {
             color: "#48525D",
           }}
         >
-          {/* 
-          Current/Latest Game
-          */}
           <div
             style={{
               display: "flex",
@@ -29,7 +29,7 @@ function App() {
             style={{
               display: "flex",
               border: "2px solid #DBE9E6",
-              minHeight: "40px",
+              minHeight: "60px",
               width: "100%",
             }}
           >
@@ -39,6 +39,7 @@ function App() {
                 width: "33%",
                 display: "flex",
                 flexDirection: "column",
+                justifyContent: "center",
                 alignItems: "center",
               }}
             >
@@ -53,6 +54,7 @@ function App() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                justifyContent: "center",
               }}
             >
               <div>Corret</div> <div>color</div>
@@ -65,10 +67,146 @@ function App() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                justifyContent: "center",
               }}
             >
               {" "}
               Score
+            </div>
+          </div>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              minHeight: "90px",
+              marginTop: "20px",
+              backgroundColor: '#DBDFE6',
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <div
+              style={{
+                backgroundColor: "green",
+                width: "60%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "40px",
+                borderRadius: "10px",
+                color: "#FFFFFF",
+              }}
+            >
+              #77D353
+            </div>
+            <img src="public/images/icons/CheckCircle.svg" alt="check-cirvle"height="30px"/>
+            <div
+              style={{
+                color: "#6B737D",
+                width: "20%",
+                fontWeight: 600
+              }}
+            >
+              2s
+            </div>
+          </div>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              minHeight: "90px",
+              marginTop: "20px",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <div
+              style={{
+                backgroundColor: "green",
+                width: "28%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "40px",
+                borderRadius: "10px",
+                color: "#FFFFFF",
+              }}
+            >
+              #77D353
+            </div>
+            <div
+              style={{
+                backgroundColor: "green",
+                width: "28%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "40px",
+                borderRadius: "10px",
+                color: "#FFFFFF",
+              }}
+            >
+              #77D353
+            </div>
+            <img src="public/images/icons/InvalidCircle.svg" alt="check-cirvle"height="30px"/>
+            <div
+              style={{
+                color: "#6B737D",
+                width: "20%",
+                fontWeight: 600
+              }}
+            >
+              2s
+            </div>
+          </div>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              minHeight: "90px",
+              marginTop: "20px",
+              backgroundColor: '#DBDFE6',
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <div
+              style={{
+                backgroundColor: "green",
+                width: "28%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "40px",
+                borderRadius: "10px",
+                color: "#FFFFFF",
+              }}
+            >
+              #77D353
+            </div>
+            <div
+              style={{
+                backgroundColor: "green",
+                width: "28%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "40px",
+                borderRadius: "10px",
+                color: "#FFFFFF",
+              }}
+            >
+              #77D353
+            </div>
+            <img src="public/images/icons/InvalidCircle.svg" alt="check-cirvle"height="30px"/>
+            <div
+              style={{
+                color: "#6B737D",
+                width: "20%",
+                fontWeight: 600
+              }}
+            >
+              2s
             </div>
           </div>
         </div>

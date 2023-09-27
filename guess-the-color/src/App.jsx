@@ -97,15 +97,20 @@ function App() {
               </div>
             </div>
           </div>
-          <div style={{ width: "30%" }}>
+          <progress
+            value="32"
+            max="100"
+            style={{ width: "60%", marginTop: "20px" }}
+          />
+          <div style={{ width: "60%" }}>
             <div
               style={{
-                display: "flex",
-                width: "80%",
-                height: "20%",
+                height: "350px",
                 backgroundColor: "red",
               }}
-            />
+            >
+              .
+            </div>
           </div>
         </div>
       </div>

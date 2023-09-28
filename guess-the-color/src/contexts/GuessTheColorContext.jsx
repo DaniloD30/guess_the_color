@@ -7,17 +7,20 @@ import {
   useReducer,
 } from "react";
 import { useTimeRemaningContext } from "./TimeRemaningContext";
+import { useCurrentLatestGameContext } from "./CurrentLatestGameContext";
 
 export const GuessTheColorContext = createContext();
 
 export function GuessTheColorProvider({ children }) {
   const [start, setStart] = useState(false);
-  const [isSelected, setIsSelected] = useState(false);
-  const [colorsHex, setColorsHex] = useState(["#FEEED8"]);
-  const [correctColor, setCorrectColor] = useState();
+  const [isSelected, setIsSelected] = useState("");
   const [restartButton, setRestart] = useState(false);
+  const [correctColor, setCorrectColor] = useState();
   const [score, setScore] = useState(0);
+  const [colorsHex, setColorsHex] = useState(["#FEEED8"]);
+
   const { time } = useTimeRemaningContext();
+  
   const gameHistoric = (state, action) => {
     switch (action) {
       case "CORRECT":
@@ -43,7 +46,7 @@ export function GuessTheColorProvider({ children }) {
               correct: false,
               time: time,
               colorCorrect: correctColor,
-              guessedColor: null,
+              guessedColor: isSelected,
               score: score,
             },
           ],
@@ -59,20 +62,19 @@ export function GuessTheColorProvider({ children }) {
               correct: false,
               time: 0,
               colorCorrect: correctColor,
-              guessedColor: null,
+              guessedColor: isSelected,
               score: score,
             },
           ],
         };
     }
   };
-  //Cria um array e a primeira posição vai ser o SCORE e o HIGHSCORE vai ser a maior pontuação dessa lista
-  // let arrHistoric = [];
   const [arrHistoric, setArrHistoric] = useReducer(gameHistoric, { items: [] });
+  const valueGames = useCurrentLatestGameContext();
   const validationSelect = (selectColor) => {
     const hit = correctColor == selectColor && time > 0;
     const wrong = selectColor && correctColor !== selectColor && time !== 31;
-
+    setIsSelected(selectColor);
     if (hit) {
       setScore(score + 5);
       setArrHistoric("CORRECT");
@@ -83,8 +85,8 @@ export function GuessTheColorProvider({ children }) {
       setScore(score - 2);
       setArrHistoric();
     }
-    generateRandomColorsArray();
   };
+
   const value = useMemo(
     () => ({
       generateRandomColorsArray,
@@ -115,11 +117,17 @@ export function GuessTheColorProvider({ children }) {
       validationSelect,
     ]
   );
+
   useEffect(() => {
     if (start && time == 0) {
       validationSelect();
     }
   }, [time]);
+
+  useEffect(() => {
+    generateRandomColorsArray();
+    valueGames.setArrGames(arrHistoric);
+  }, [arrHistoric]);
 
   function getRandomHexColor() {
     const letters = "0123456789ABCDEF";

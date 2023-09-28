@@ -1,5 +1,6 @@
 import { CurrentAndLatestGame } from "./components/CurrentAndLatestGame";
 import { GuessTheColor } from "./components/GuessTheColor";
+import { CurrentLatestGameProvider } from "./contexts/CurrentLatestGameContext";
 import { GuessTheColorProvider } from "./contexts/GuessTheColorContext";
 import { TimeRemaningProvider } from "./contexts/TimeRemaningContext";
 
@@ -7,16 +8,18 @@ function App() {
   return (
     <>
       <TimeRemaningProvider>
-        <GuessTheColorProvider>
-          <div
-            style={{
-              display: "flex",
-            }}
-          >
-            <CurrentAndLatestGame />
-            <GuessTheColor />
-          </div>
-        </GuessTheColorProvider>
+        <CurrentLatestGameProvider>
+          <GuessTheColorProvider>
+            <div
+              style={{
+                display: "flex",
+              }}
+            >
+              <CurrentAndLatestGame />
+              <GuessTheColor />
+            </div>
+          </GuessTheColorProvider>
+        </CurrentLatestGameProvider>
       </TimeRemaningProvider>
     </>
   );

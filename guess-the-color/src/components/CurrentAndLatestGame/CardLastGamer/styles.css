@@ -3,20 +3,29 @@
   display: flex;
   min-height: 90px;
   margin-top: 20px;
-  background-color: #DBDFE6;
+  background-color: #dbdfe6;
   align-items: center;
   justify-content: space-between;
 }
 
-.green-box {
-  background-color: green;
+.correct-box {
   width: 60%;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 40px;
   border-radius: 10px;
-  color: #FFFFFF;
+  color: #ffffff;
+}
+
+.invalid-box {
+  width: 28%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border-radius: 10px;
+  color: #ffffff;
 }
 
 .check-icon {
@@ -24,7 +33,7 @@
 }
 
 .timer {
-  color: #6B737D;
+  color: #6b737d;
   width: 20%;
   font-weight: 600;
 }

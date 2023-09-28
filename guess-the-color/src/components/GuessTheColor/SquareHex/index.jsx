@@ -1,7 +1,6 @@
 import { useGuessTheColorContext } from "../../../contexts/GuessTheColorContext";
 import "./styles.css";
 export function SquareHex() {
-  // const { setStart, start, colorsHex } = useGuessTheColorContext();
   const  value  = useGuessTheColorContext();
   return (
     <>

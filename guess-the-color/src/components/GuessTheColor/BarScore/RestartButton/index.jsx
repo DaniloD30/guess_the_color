@@ -1,14 +1,17 @@
+import { useGuessTheColorContext } from "../../../../contexts/GuessTheColorContext";
 import "../styles.css";
 export function RestartButton() {
-  /* 
-  TODO: Deixar habilitado apenas quando der play
-        Deixar habilitado quando remaning !== 0
-  */
+  const value = useGuessTheColorContext();
+
   return (
     <>
-      <div className="restartButton">
+      <button
+        className="restartButton"
+        disabled={!value.start}
+        onClick={() => value.setRestart(true)}
+      >
         <div className="heading">RESTART</div>
-      </div>
+      </button>
     </>
   );
 }

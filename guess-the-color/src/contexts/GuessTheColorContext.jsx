@@ -15,6 +15,7 @@ export function GuessTheColorProvider({ children }) {
   const [isSelected, setIsSelected] = useState(false);
   const [colorsHex, setColorsHex] = useState(["#FEEED8"]);
   const [correctColor, setCorrectColor] = useState();
+  const [restartButton, setRestart] = useState(false);
   const [score, setScore] = useState(0);
   const { time } = useTimeRemaningContext();
   const gameHistoric = (state, action) => {
@@ -90,6 +91,9 @@ export function GuessTheColorProvider({ children }) {
       colorsHex,
       start,
       setStart,
+      setRestart,
+      restartButton,
+      setScore,
       score,
       arrHistoric,
       setIsSelected,
@@ -100,7 +104,10 @@ export function GuessTheColorProvider({ children }) {
       generateRandomColorsArray,
       colorsHex,
       start,
+      setRestart,
+      setScore,
       setStart,
+      restartButton,
       arrHistoric,
       score,
       setIsSelected,
@@ -141,9 +148,6 @@ export function GuessTheColorProvider({ children }) {
     }
   }, [start]);
 
-  /* 
-  TODO: Em LATEST Ordenar o array em decrescente
-  */
   return (
     <GuessTheColorContext.Provider value={value}>
       {children}

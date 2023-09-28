@@ -24,6 +24,10 @@
     width: 33%;
 }
 
+.restartButton:hover {
+    background-color: #8290a3;
+    cursor: pointer;
+}
 .containerHighScore {
     width: 33%;
     height: 100%;

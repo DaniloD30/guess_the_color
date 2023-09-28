@@ -3,15 +3,21 @@ import "../styles.css";
 import { useGuessTheColorContext } from "../../../../contexts/GuessTheColorContext";
 import { useTimeRemaningContext } from "../../../../contexts/TimeRemaningContext";
 export function RemaningTimes({ timeContext, setTimeContext }) {
-  // const [time, setTime] = useState(30);
   const value = useGuessTheColorContext();
 
   const { time, setTime } = useTimeRemaningContext();
 
   if (value.start) {
     let timeoutID = setTimeout(() => {
-      setTime(time - 1);
-      setTimeContext(timeContext - 3.33);
+      if (value.restartButton) {
+        setTime(31);
+        setTimeContext(100);
+        value.setRestart(false);
+        value.setScore(0);
+      } else {
+        setTimeContext(timeContext - 3.33);
+        setTime(time - 1);
+      }
     }, 1000);
 
     if (time == 0) {
@@ -32,17 +38,7 @@ export function RemaningTimes({ timeContext, setTimeContext }) {
     }
   }, [time]);
 
-  // useEffect(() => {
-  //   if (isSelected) {
-  //     setTimeSelect(time);
-  //     setIsSelected(false);
-  //   }
-  // }, [isSelected]);
-  /* 
-  TODO: Quando der START, iniciar o contador REMANING
-        quando o contador chegar em ZERO, volta para o 30
-        e finaliza a rodada.
-  */
+ 
   return (
     <>
       <div className="remaning">

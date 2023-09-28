@@ -1,12 +1,7 @@
-import { useEffect } from "react";
 import { useGuessTheColorContext } from "../../../contexts/GuessTheColorContext";
 import "./styles.css";
 export function ButtonsGame() {
-  // const { colorsHex, start,  validationSelect } =
-  //   useGuessTheColorContext();
-
   const  value  = useGuessTheColorContext();
-  // const correctColor = colorsHex[Math.floor(Math.random() * 3)];
 
   const handleClick = (selected) => {
     value.validationSelect(selected);

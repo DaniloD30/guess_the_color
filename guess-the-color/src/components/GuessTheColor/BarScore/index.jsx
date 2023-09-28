@@ -1,28 +1,26 @@
+import { useEffect, useState } from "react";
 import "./styles.css";
+import { RemaningTimes } from "./RemaningTimes";
+import { HighScore } from "./HighScore";
+import { Score } from "./Score";
+import { RestartButton } from "./RestartButton";
 export function BarScore() {
+  /* 
+  TODO: Quando der START, iniciar o contador REMANING
+        quando o contador chegar em ZERO, volta para o 30
+        e finaliza a rodada.
+  */
   return (
     <>
       <div className="containerBarScore">
-        <div className="remaning">
-          <div className="heading">REMANING</div>
-          <div className="heading">TIMES (S)</div>
-          <h2 className="heading">30</h2>
-        </div>
+        <RemaningTimes />
         <div className="verticalSeparator"></div>
-        <div className="restartButton">
-          <div className="heading">RESTART</div>
-        </div>
+        <RestartButton />
         <div className="verticalSeparator"></div>
         <div className="containerHighScore">
-          <div className="row-containerHighScore">
-            <div className="highscore-title">HIGH SCORE</div>
-            <div className="value-highscore">13</div>
-          </div>
+          <HighScore />
           <hr class="solid"></hr>
-          <div className="containerScore">
-            <div className="value-score">SCORE</div>
-            <div className="value-highscore">10</div>
-          </div>
+          <Score />
         </div>
       </div>
     </>

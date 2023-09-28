@@ -55,6 +55,7 @@ export function GuessTheColorProvider({ children }) {
         timeContext,
         setTimeContext,
         generateRandomColorsArray,
+        colorsHex,
         start,
         setStart,
       }}

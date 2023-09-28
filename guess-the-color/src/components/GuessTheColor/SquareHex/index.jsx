@@ -1,18 +1,15 @@
 import { useGuessTheColorContext } from "../../../contexts/GuessTheColorContext";
 import "./styles.css";
 export function SquareHex() {
-  const { setStart, start } = useGuessTheColorContext();
+  const { setStart, start, colorsHex } = useGuessTheColorContext();
+
   return (
     <>
-      {/* 
-              GUESS THE COLOR
-              */}
-
       <div style={{ width: "60%" }}>
         <div
           style={{
             height: "350px",
-            backgroundColor: "red",
+            backgroundColor: `${colorsHex[0]}`,
           }}
         >
           .

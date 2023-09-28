@@ -1,0 +1,30 @@
+.container {
+  width: 100%;
+  display: flex;
+  min-height: 90px;
+  margin-top: 20px;
+  background-color: #DBDFE6;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.green-box {
+  background-color: green;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border-radius: 10px;
+  color: #FFFFFF;
+}
+
+.check-icon {
+  height: 30px;
+}
+
+.timer {
+  color: #6B737D;
+  width: 20%;
+  font-weight: 600;
+}

@@ -7,9 +7,6 @@ import { ResetAllData } from "./ResetAllData";
 export function GuessTheColor() {
   return (
     <>
-      {/* 
-            GUESS THE COLOR
-            */}
       <div
         style={{
           display: "flex",
@@ -29,5 +26,3 @@ export function GuessTheColor() {
     </>
   );
 }
-
-

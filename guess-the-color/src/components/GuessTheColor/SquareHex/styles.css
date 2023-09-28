@@ -1,0 +1,15 @@
+.containerButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+}
+
+.buttonStart {
+  background-color: #48525d;
+  color: #ffffff;
+  border-radius: 5px;
+  height: 50px;
+  width: 100px;
+  cursor: pointer;
+}

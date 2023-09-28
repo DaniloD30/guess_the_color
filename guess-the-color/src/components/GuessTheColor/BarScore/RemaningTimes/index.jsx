@@ -3,16 +3,24 @@ import "../styles.css";
 import { useGuessTheColorContext } from "../../../../contexts/GuessTheColorContext";
 export function RemaningTimes() {
   const [time, setTime] = useState(30);
-  const { timeContext, setTimeContext } = useGuessTheColorContext();
-  let timeoutID = setTimeout(() => {
-    setTime(time - 1);
-    setTimeContext(timeContext - 3.33);
-  }, 1000);
+  const { timeContext, setTimeContext, start, setStart } =
+    useGuessTheColorContext();
+  if (start) {
+    let timeoutID = setTimeout(() => {
+      setTime(time - 1);
+      setTimeContext(timeContext - 3.33);
+    }, 1000);
 
-  useEffect(() => {
     if (time == 0) {
       clearTimeout(timeoutID);
-      setTime(30);
+      setTime(31);
+      setStart(false);
+      setTimeContext(100);
+    }
+  }
+
+  useEffect(() => {
+    if (time == 30) {
       setTimeContext(100);
     }
   }, [time]);
@@ -27,7 +35,7 @@ export function RemaningTimes() {
       <div className="remaning">
         <div className="heading">REMANING</div>
         <div className="heading">TIMES (S)</div>
-        <h2 className="heading">{time}</h2>
+        <h2 className="heading">{time == 31 ? 30 : time}</h2>
       </div>
     </>
   );

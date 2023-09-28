@@ -1,9 +1,13 @@
+import { useGuessTheColorContext } from "../../../contexts/GuessTheColorContext";
+import "./styles.css";
 export function SquareHex() {
+  const { setStart, start } = useGuessTheColorContext();
   return (
     <>
       {/* 
               GUESS THE COLOR
               */}
+
       <div style={{ width: "60%" }}>
         <div
           style={{
@@ -12,27 +16,13 @@ export function SquareHex() {
           }}
         >
           .
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              height: "80%",
-            }}
-          >
-            <button
-              style={{
-                backgroundColor: "#48525D",
-                color: "#FFFFFF",
-                borderRadius: "5px",
-                height: "50px",
-                width: "100px",
-                cursor: "pointer",
-              }}
-            >
-              START
-            </button>
-          </div>
+          {!start ? (
+            <div className="containerButton">
+              <button className="buttonStart" onClick={() => setStart(true)}>
+                START
+              </button>
+            </div>
+          ) : null}
         </div>
       </div>
     </>

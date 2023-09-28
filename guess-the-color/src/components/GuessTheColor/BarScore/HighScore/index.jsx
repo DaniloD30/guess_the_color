@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles.css";
+import { useGuessTheColorContext } from "../../../../contexts/GuessTheColorContext";
 export function HighScore() {
+  const value = useGuessTheColorContext();
   const [highScore, setHighScore] = useState(0);
 
-  /* 
-  TODO: Quando finalizar a rodada, verificar se a pontuação
-        foi maior que a ultima, e guardar o maior valor
+  useEffect(() => {
+    if (!value.start && value.arrHistoric.items.length > 0) {
+      let high = value.arrHistoric.items.sort((a, b) => b.score - a.score);
+      setHighScore(high[0].score);
+    }
+  }, [value.start]);
 
-        lógica do highScore? Salvar os scores em um array?
-        esse mesmo array dos ultimos jogos?
-  */
   return (
     <>
       <div className="row-containerHighScore">

@@ -1,4 +1,11 @@
-import { createContext, useContext, useEffect, useState, useMemo } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useMemo,
+  useReducer,
+} from "react";
 import { useTimeRemaningContext } from "./TimeRemaningContext";
 
 export const GuessTheColorContext = createContext();
@@ -8,26 +15,72 @@ export function GuessTheColorProvider({ children }) {
   const [isSelected, setIsSelected] = useState(false);
   const [colorsHex, setColorsHex] = useState(["#FEEED8"]);
   const [correctColor, setCorrectColor] = useState();
-  const [timeSelect, setTimeSelect] = useState();
+  const [score, setScore] = useState(0);
   const { time } = useTimeRemaningContext();
+  const gameHistoric = (state, action) => {
+    switch (action) {
+      case "CORRECT":
+        return {
+          ...state,
+          items: [
+            ...state.items,
+            {
+              correct: true,
+              time: time,
+              colorCorrect: correctColor,
+              guessedColor: null,
+              score: score,
+            },
+          ],
+        };
+      case "INCORRECT":
+        return {
+          ...state,
+          items: [
+            ...state.items,
+            {
+              correct: false,
+              time: time,
+              colorCorrect: correctColor,
+              guessedColor: null,
+              score: score,
+            },
+          ],
+        };
+      case "RESET":
+        return [];
+      default:
+        return {
+          ...state,
+          items: [
+            ...state.items,
+            {
+              correct: false,
+              time: 0,
+              colorCorrect: correctColor,
+              guessedColor: null,
+              score: score,
+            },
+          ],
+        };
+    }
+  };
+  //Cria um array e a primeira posição vai ser o SCORE e o HIGHSCORE vai ser a maior pontuação dessa lista
+  // let arrHistoric = [];
+  const [arrHistoric, setArrHistoric] = useReducer(gameHistoric, { items: [] });
   const validationSelect = (selectColor) => {
-    console.log("correctHex -->", correctColor);
-    console.log("selectColor -->", selectColor);
-    console.log("timeSelect -->", time);
-    if (correctColor == selectColor) {
-      let obj = {
-        correct: true,
-        time: time,
-        colorCorrect: correctColor,
-        guessedColor: null,
-      };
+    const hit = correctColor == selectColor && time > 0;
+    const wrong = selectColor && correctColor !== selectColor && time !== 31;
+
+    if (hit) {
+      setScore(score + 5);
+      setArrHistoric("CORRECT");
+    } else if (wrong) {
+      setScore(score - 1);
+      setArrHistoric("INCORRECT");
     } else {
-      let obj = {
-        correct: false,
-        time: time,
-        colorCorrect: correctColor,
-        guessedColor: selectColor,
-      };
+      setScore(score - 2);
+      setArrHistoric();
     }
     generateRandomColorsArray();
   };
@@ -37,7 +90,8 @@ export function GuessTheColorProvider({ children }) {
       colorsHex,
       start,
       setStart,
-      setTimeSelect,
+      score,
+      arrHistoric,
       setIsSelected,
       isSelected,
       validationSelect,
@@ -47,12 +101,19 @@ export function GuessTheColorProvider({ children }) {
       colorsHex,
       start,
       setStart,
-      setTimeSelect,
+      arrHistoric,
+      score,
       setIsSelected,
       isSelected,
       validationSelect,
     ]
   );
+  useEffect(() => {
+    if (start && time == 0) {
+      validationSelect();
+    }
+  }, [time]);
+
   function getRandomHexColor() {
     const letters = "0123456789ABCDEF";
     let color = "#";
@@ -70,33 +131,18 @@ export function GuessTheColorProvider({ children }) {
     setColorsHex(colorsArray);
     setCorrectColor(colorsArray[Math.floor(Math.random() * 3)]);
   }
+
   useEffect(() => {
     if (start) {
-      console.log("generate");
       generateRandomColorsArray();
+    }
+    if (!start) {
+      setScore(0);
     }
   }, [start]);
 
-  // const colors = generateRandomColorsArray(3);
-
   /* 
-  TODO: Gerador de cores, chamo 3 vezes
-        salvo as 3 cores no array
-        mostro uma deles aleatoriamente no quadrado (randon index)
-        verifico em qual o o usuario clicou e faço a pontuação
-
-        a cada clique salvar {
-          corret: true,
-          time: 20,
-          colorCorret: x,
-          guessedColor: null
-        }
-         a cada clique errou {
-          corret: false,
-          time: 20,
-          colorCorret: x
-          guessedColor: x
-        }
+  TODO: Em LATEST Ordenar o array em decrescente
   */
   return (
     <GuessTheColorContext.Provider value={value}>

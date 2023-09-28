@@ -1,8 +1,8 @@
 import {  useState } from "react";
 import "../styles.css";
+import { useGuessTheColorContext } from "../../../../contexts/GuessTheColorContext";
 export function Score() {
-  const [score, setScore] = useState(0);
-
+  const value  = useGuessTheColorContext();
   /* 
   TODO: Quando finalizar a rodada, pegar o somatorio
         E mostrar aqui.
@@ -13,7 +13,7 @@ export function Score() {
     <>
       <div className="containerScore">
         <div className="value-score">SCORE</div>
-        <div className="value-highscore">{score}</div>
+        <div className="value-highscore">{value.score}</div>
       </div>
     </>
   );

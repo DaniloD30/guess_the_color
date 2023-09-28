@@ -4,7 +4,7 @@ import { useGuessTheColorContext } from "../../../../contexts/GuessTheColorConte
 import { useTimeRemaningContext } from "../../../../contexts/TimeRemaningContext";
 export function RemaningTimes({ timeContext, setTimeContext }) {
   // const [time, setTime] = useState(30);
-  const value  = useGuessTheColorContext();
+  const value = useGuessTheColorContext();
 
   const { time, setTime } = useTimeRemaningContext();
 
@@ -24,6 +24,10 @@ export function RemaningTimes({ timeContext, setTimeContext }) {
 
   useEffect(() => {
     if (time == 30) {
+      setTimeContext(100);
+    }
+    if (time == 0) {
+      setTime(31);
       setTimeContext(100);
     }
   }, [time]);

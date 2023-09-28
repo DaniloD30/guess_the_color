@@ -1,7 +1,7 @@
 import "./styles.css";
-import { useGuessTheColorContext } from "../../../contexts/GuessTheColorContext";
-export function ProgressBar() {
-  const { timeContext } = useGuessTheColorContext();
+import { useTimeRemaningContext } from "../../../contexts/TimeRemaningContext";
+export function ProgressBar({ timeContext }) {
+  // const { timeContext } = useTimeRemaningContext();
   return (
     <>
       <div className="containerProgress">

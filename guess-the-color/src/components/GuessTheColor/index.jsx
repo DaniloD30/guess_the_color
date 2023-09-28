@@ -1,4 +1,3 @@
-import { ProgressBar } from "./ProgressBar";
 import { BarScore } from "./BarScore";
 import { SquareHex } from "./SquareHex";
 import { ButtonsGame } from "./ButtonsGame";
@@ -18,7 +17,6 @@ export function GuessTheColor() {
       >
         <h1>Guess the color</h1>
         <BarScore />
-        <ProgressBar />
         <SquareHex />
         <ButtonsGame />
         <ResetAllData />

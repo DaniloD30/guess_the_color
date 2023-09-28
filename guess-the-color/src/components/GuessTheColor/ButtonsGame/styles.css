@@ -1,0 +1,15 @@
+.containerButtonsGame {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttonGame {
+  background-color: #FFFFFF;
+  color: #48525D;
+  border-radius: 5px;
+  height: 50px;
+  width: 200px;
+  cursor: pointer;
+}

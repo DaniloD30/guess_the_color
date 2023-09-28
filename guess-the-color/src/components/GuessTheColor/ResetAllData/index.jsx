@@ -1,3 +1,5 @@
+import { useGuessTheColorContext } from "../../../contexts/GuessTheColorContext";
+
 export function ResetAllData() {
   return (
     <>

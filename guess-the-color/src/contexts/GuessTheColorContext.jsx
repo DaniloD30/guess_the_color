@@ -1,11 +1,58 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, useMemo } from "react";
+import { useTimeRemaningContext } from "./TimeRemaningContext";
 
 export const GuessTheColorContext = createContext();
 
 export function GuessTheColorProvider({ children }) {
-  const [timeContext, setTimeContext] = useState(100);
   const [start, setStart] = useState(false);
-  const [colorsHex, setColorsHex] = useState([]);
+  const [isSelected, setIsSelected] = useState(false);
+  const [colorsHex, setColorsHex] = useState(["#FEEED8"]);
+  const [correctColor, setCorrectColor] = useState();
+  const [timeSelect, setTimeSelect] = useState();
+  const { time } = useTimeRemaningContext();
+  const validationSelect = (selectColor) => {
+    console.log("correctHex -->", correctColor);
+    console.log("selectColor -->", selectColor);
+    console.log("timeSelect -->", time);
+    if (correctColor == selectColor) {
+      let obj = {
+        correct: true,
+        time: time,
+        colorCorrect: correctColor,
+        guessedColor: null,
+      };
+    } else {
+      let obj = {
+        correct: false,
+        time: time,
+        colorCorrect: correctColor,
+        guessedColor: selectColor,
+      };
+    }
+    generateRandomColorsArray();
+  };
+  const value = useMemo(
+    () => ({
+      generateRandomColorsArray,
+      colorsHex,
+      start,
+      setStart,
+      setTimeSelect,
+      setIsSelected,
+      isSelected,
+      validationSelect,
+    }),
+    [
+      generateRandomColorsArray,
+      colorsHex,
+      start,
+      setStart,
+      setTimeSelect,
+      setIsSelected,
+      isSelected,
+      validationSelect,
+    ]
+  );
   function getRandomHexColor() {
     const letters = "0123456789ABCDEF";
     let color = "#";
@@ -21,9 +68,11 @@ export function GuessTheColorProvider({ children }) {
       colorsArray.push(getRandomHexColor());
     }
     setColorsHex(colorsArray);
+    setCorrectColor(colorsArray[Math.floor(Math.random() * 3)]);
   }
   useEffect(() => {
     if (start) {
+      console.log("generate");
       generateRandomColorsArray();
     }
   }, [start]);
@@ -50,16 +99,7 @@ export function GuessTheColorProvider({ children }) {
         }
   */
   return (
-    <GuessTheColorContext.Provider
-      value={{
-        timeContext,
-        setTimeContext,
-        generateRandomColorsArray,
-        colorsHex,
-        start,
-        setStart,
-      }}
-    >
+    <GuessTheColorContext.Provider value={value}>
       {children}
     </GuessTheColorContext.Provider>
   );

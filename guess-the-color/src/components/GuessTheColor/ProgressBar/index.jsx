@@ -1,19 +1,14 @@
+import "./styles.css";
+import { useGuessTheColorContext } from "../../../contexts/GuessTheColorContext";
 export function ProgressBar() {
+  const { timeContext } = useGuessTheColorContext();
+
   return (
     <>
-      {/* 
-            GUESS THE COLOR
-            */}
-      <div
-        style={{
-          marginTop: "30px",
-          width: "60%",
-          backgroundColor: "#E5E9D6",
-        }}
-      >
+      <div className="containerProgress">
         <div
           style={{
-            width: "10%",
+            width: `${timeContext}%`,
             height: "15px",
             backgroundColor: "#8290A3",
           }}

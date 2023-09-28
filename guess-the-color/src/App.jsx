@@ -1,8 +1,10 @@
 import { GuessTheColor } from "./components/GuessTheColor";
+import { GuessTheColorProvider } from "./contexts/GuessTheColorContext";
 
 function App() {
   return (
     <>
+      <GuessTheColorProvider>
       <div
         style={{
           display: "flex",
@@ -226,7 +228,7 @@ function App() {
         </div>
         <GuessTheColor />
       </div>
-      
+      </GuessTheColorProvider>
     </>
   );
 }

@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 import "../styles.css";
+import { useGuessTheColorContext } from "../../../../contexts/GuessTheColorContext";
 export function RemaningTimes() {
   const [time, setTime] = useState(30);
-
+  const { timeContext, setTimeContext } = useGuessTheColorContext();
   let timeoutID = setTimeout(() => {
     setTime(time - 1);
+    setTimeContext(timeContext - 3.33);
   }, 1000);
 
   useEffect(() => {
     if (time == 0) {
       clearTimeout(timeoutID);
       setTime(30);
+      setTimeContext(100);
     }
   }, [time]);
 

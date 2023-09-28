@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "./styles.css";
 import { RemaningTimes } from "./RemaningTimes";
 import { HighScore } from "./HighScore";

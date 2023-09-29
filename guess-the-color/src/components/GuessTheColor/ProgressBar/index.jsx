@@ -3,7 +3,7 @@ export function ProgressBar({ timeContext }) {
   return (
     <>
       <div className="containerProgress">
-        <div
+        <div data-testid="progress-container"
           style={{
             width: `${timeContext}%`,
             height: "15px",

@@ -1,4 +1,4 @@
-.container {
+.container-card-last-game {
   width: 100%;
   display: flex;
   min-height: 90px;
@@ -36,4 +36,14 @@
   color: #6b737d;
   width: 20%;
   font-weight: 600;
+}
+
+::-webkit-scrollbar {
+  width: 8px; /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: black; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid #959599; /* creates padding around scroll thumb */
 }

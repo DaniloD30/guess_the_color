@@ -2,6 +2,7 @@ import { useGuessTheColorContext } from "../../../contexts/GuessTheColorContext"
 import "./styles.css";
 export function SquareHex() {
   const  value  = useGuessTheColorContext();
+  
   return (
     <>
       <div style={{ width: "60%" }}>

@@ -21,7 +21,14 @@ export function CurrentAndLatestGame() {
           <h3>Current/Latest game</h3>
         </div>
         <BarGuessedColor />
-        <CardLastGamer />
+        <div
+          style={{
+            maxHeight: "80vh",
+            overflowY: "auto",
+          }}
+        >
+          <CardLastGamer />
+        </div>
       </div>
     </>
   );

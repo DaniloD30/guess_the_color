@@ -5,6 +5,9 @@ export function HighScore() {
   const value = useGuessTheColorContext();
   const [highScore, setHighScore] = useState(0);
 
+   /* 
+  TODO: highScore em localStorage
+  */
   useEffect(() => {
     if (!value.start && value.arrHistoric.items.length > 0) {
       let high = [...value.arrHistoric.items];

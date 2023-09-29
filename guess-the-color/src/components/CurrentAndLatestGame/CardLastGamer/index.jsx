@@ -1,16 +1,24 @@
 import { useCurrentLatestGameContext } from "../../../contexts/CurrentLatestGameContext";
+
 import "./styles.css";
 export function CardLastGamer() {
   const value = useCurrentLatestGameContext();
-
+  const reverseArrGame = [...value.arrGames.items].reverse();
   /* 
-  TODO: Formato de pilha, o ultimo em primeiro        
+  TODO: 
+  // A cada vez que uma partida é iniciada, 
+  essa pilha é resetada. (representada no protótipo por 
+    
+  ]
+
+    pilha em localStorage
   */
+
   return (
     <>
-      {value.arrGames.items.map((game, index) =>
+      {reverseArrGame.map((game, index) =>
         game.correct ? (
-          <div key={`${game.time}-${index}`} className="container">
+          <div key={`${game.time}-${index}`} className="container-card-last-game">
             <div
               className="correct-box"
               style={{
@@ -27,7 +35,7 @@ export function CardLastGamer() {
             <div className="timer">{game.time}</div>
           </div>
         ) : (
-          <div key={`${game.time}-${index}`} className="container">
+          <div key={`${game.time}-${index}`} className="container-card-last-game">
             <div
               className="invalid-box"
               style={{

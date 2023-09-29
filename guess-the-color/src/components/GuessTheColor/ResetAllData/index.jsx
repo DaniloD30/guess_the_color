@@ -1,30 +1,13 @@
 import { useGuessTheColorContext } from "../../../contexts/GuessTheColorContext";
-
+import "./styles.css";
 export function ResetAllData() {
+  const value = useGuessTheColorContext();
   return (
     <>
-      {/* 
-                GUESS THE COLOR
-                */}
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "end",
-          height: "20%",
-          alignItems: "end",
-          marginRight: "20%",
-        }}
-      >
+      <div className="containerResetAllData">
         <button
-          style={{
-            backgroundColor: "#48525D",
-            color: "#FFFFFF",
-            borderRadius: "5px",
-            height: "50px",
-            width: "150px",
-            cursor: "pointer",
-          }}
+          className="buttonResetAllData"
+          onClick={() => value.resetAllData()}
         >
           Reset All Data
         </button>

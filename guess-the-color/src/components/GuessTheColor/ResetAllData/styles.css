@@ -1,0 +1,16 @@
+.containerResetAllData {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  height: 20%;
+  align-items: end;
+  margin-right: 20%;
+}
+.buttonResetAllData {
+  background-color: #48525d;
+  color: #ffffff;
+  border-radius: 5px;
+  height: 50px;
+  width: 150px;
+  cursor: pointer;
+}

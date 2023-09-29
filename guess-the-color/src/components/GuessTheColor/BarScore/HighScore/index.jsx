@@ -5,16 +5,24 @@ export function HighScore() {
   const value = useGuessTheColorContext();
   const [highScore, setHighScore] = useState(0);
 
-   /* 
-  TODO: highScore em localStorage
-  */
   useEffect(() => {
     if (!value.start && value.arrHistoric.items.length > 0) {
       let high = [...value.arrHistoric.items];
-      setHighScore(high.sort((a, b) => b.score - a.score)[0].score);
+      let isBigger =
+        high.sort((a, b) => b.score - a.score)[0].score >
+        window.localStorage.getItem("highScore")
+          ? high.sort((a, b) => b.score - a.score)[0].score
+          : window.localStorage.getItem("highScore");
+      setHighScore(isBigger);
+      window.localStorage.setItem("highScore", isBigger);
     }
   }, [value.start]);
 
+  useEffect(() => {
+    if (value.resetData) {
+      setHighScore(0);
+    }
+  }, [value.resetData]);
   return (
     <>
       <div className="row-containerHighScore">

@@ -11,8 +11,8 @@ import { useCurrentLatestGameContext } from "./CurrentLatestGameContext";
 
 export const GuessTheColorContext = createContext();
 
-export function GuessTheColorProvider({ children }) {
-  const [start, setStart] = useState(false);
+export function GuessTheColorProvider({ initialValue ,children }) {
+  const [start, setStart] = useState(initialValue.start);
   const [isSelected, setIsSelected] = useState("");
   const [restartButton, setRestart] = useState(false);
   const [resetData, setReset] = useState(false);

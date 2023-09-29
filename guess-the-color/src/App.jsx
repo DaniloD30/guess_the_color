@@ -9,7 +9,11 @@ function App() {
     <>
       <TimeRemaningProvider>
         <CurrentLatestGameProvider>
-          <GuessTheColorProvider>
+          <GuessTheColorProvider
+            initialValue={{
+              start: false,
+            }}
+          >
             <div
               style={{
                 display: "flex",

@@ -2,7 +2,6 @@ import { useGuessTheColorContext } from "../../../../contexts/GuessTheColorConte
 import "../styles.css";
 export function RestartButton() {
   const value = useGuessTheColorContext();
-
   return (
     <>
       <button

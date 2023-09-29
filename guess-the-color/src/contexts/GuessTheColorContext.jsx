@@ -20,7 +20,7 @@ export function GuessTheColorProvider({ children }) {
   const [colorsHex, setColorsHex] = useState(["#FEEED8"]);
 
   const { time } = useTimeRemaningContext();
-  
+
   const gameHistoric = (state, action) => {
     switch (action) {
       case "CORRECT":

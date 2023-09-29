@@ -1,19 +1,16 @@
-import { useEffect, useState } from "react";
 import { useCurrentLatestGameContext } from "../../../contexts/CurrentLatestGameContext";
 import "./styles.css";
 export function CardLastGamer() {
   const value = useCurrentLatestGameContext();
 
   /* 
-  TODO: Formato de pilha, o ultimo em primeiro
-  TODO: Esta salvando corretamente?
-        O pr
+  TODO: Formato de pilha, o ultimo em primeiro        
   */
   return (
     <>
-      {value.arrGames.items.map((game) =>
+      {value.arrGames.items.map((game, index) =>
         game.correct ? (
-          <div className="container">
+          <div key={`${game.time}-${index}`} className="container">
             <div
               className="correct-box"
               style={{
@@ -30,7 +27,7 @@ export function CardLastGamer() {
             <div className="timer">{game.time}</div>
           </div>
         ) : (
-          <div className="container">
+          <div key={`${game.time}-${index}`} className="container">
             <div
               className="invalid-box"
               style={{

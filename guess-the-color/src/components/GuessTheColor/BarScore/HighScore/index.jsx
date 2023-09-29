@@ -7,8 +7,8 @@ export function HighScore() {
 
   useEffect(() => {
     if (!value.start && value.arrHistoric.items.length > 0) {
-      let high = value.arrHistoric.items.sort((a, b) => b.score - a.score);
-      setHighScore(high[0].score);
+      let high = [...value.arrHistoric.items];
+      setHighScore(high.sort((a, b) => b.score - a.score)[0].score);
     }
   }, [value.start]);
 

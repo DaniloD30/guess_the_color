@@ -1,14 +1,8 @@
-import {  useState } from "react";
 import "../styles.css";
 import { useGuessTheColorContext } from "../../../../contexts/GuessTheColorContext";
 export function Score() {
-  const value  = useGuessTheColorContext();
-  /* 
-  TODO: Quando finalizar a rodada, pegar o somatorio
-        E mostrar aqui.
+  const value = useGuessTheColorContext();
 
-        Lógica caso erre, caso acerte, caso erre por causa do tempo
-  */
   return (
     <>
       <div className="containerScore">

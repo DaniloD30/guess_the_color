@@ -13,6 +13,7 @@ describe("Render ResetAllData", () => {
           <GuessTheColorProvider
             initialValue={{
               start: false,
+              initialArrHistoric: { items: [] }
             }}
           >
             <ResetAllData />

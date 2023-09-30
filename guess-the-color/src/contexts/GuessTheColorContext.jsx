@@ -11,7 +11,11 @@ import { useCurrentLatestGameContext } from "./CurrentLatestGameContext";
 
 export const GuessTheColorContext = createContext();
 
-export function GuessTheColorProvider({ initialValue ,children }) {
+export function GuessTheColorProvider({
+  initialValue,
+  initialArrHistoric,
+  children,
+}) {
   const [start, setStart] = useState(initialValue.start);
   const [isSelected, setIsSelected] = useState("");
   const [restartButton, setRestart] = useState(false);
@@ -70,13 +74,15 @@ export function GuessTheColorProvider({ initialValue ,children }) {
         };
     }
   };
+  const haveHistoric = window.localStorage.getItem("arrHistoric");
   const initialValueLocalStorage = JSON.parse(
-    window.localStorage.getItem("arrHistoric")
+    haveHistoric ? haveHistoric : '{"items": []}'
   );
   const validateInitialValue = initialValueLocalStorage
     ? initialValueLocalStorage
-    : { items: [] };
-
+    : initialArrHistoric;
+  //TODO: o items do validateInitialValue vai vim da props do GuessTheColorProvider
+  //TODO: o correctColor vai vim da props do GuessTheColorProvider
   const [arrHistoric, setArrHistoric] = useReducer(
     gameHistoric,
     validateInitialValue
@@ -131,7 +137,7 @@ export function GuessTheColorProvider({ initialValue ,children }) {
   useEffect(() => {
     if (start) {
       setScore(0);
-      setReset(false)
+      setReset(false);
       setArrHistoric("RESET");
       localStorage.removeItem("arrHistoric");
     }
@@ -145,7 +151,7 @@ export function GuessTheColorProvider({ initialValue ,children }) {
     localStorage.removeItem("arrHistoric");
     localStorage.removeItem("highScore");
     setArrHistoric("RESET");
-    setReset(true)
+    setReset(true);
   };
   const value = useMemo(
     () => ({

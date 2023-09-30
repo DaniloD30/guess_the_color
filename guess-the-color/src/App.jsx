@@ -12,6 +12,7 @@ function App() {
           <GuessTheColorProvider
             initialValue={{
               start: false,
+              initialArrHistoric: { items: [] }
             }}
           >
             <div

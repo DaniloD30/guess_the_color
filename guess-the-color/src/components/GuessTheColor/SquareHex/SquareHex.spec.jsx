@@ -13,6 +13,7 @@ describe("Render SquareHex", () => {
           <GuessTheColorProvider
             initialValue={{
               start: false,
+              initialArrHistoric: { items: [] }
             }}
           >
             <SquareHex />

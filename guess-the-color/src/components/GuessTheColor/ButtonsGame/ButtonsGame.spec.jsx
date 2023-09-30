@@ -13,6 +13,7 @@ describe("Render ButtonsGame", () => {
           <GuessTheColorProvider
             initialValue={{
               start: true,
+              initialArrHistoric: { items: [] }
             }}
           >
             <ButtonsGame />

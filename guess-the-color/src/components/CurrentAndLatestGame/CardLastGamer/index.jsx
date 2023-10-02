@@ -26,7 +26,7 @@ export function CardLastGamer() {
             </div>
             <img
               className="check-icon"
-              src="public/images/icons/CheckCircle.svg"
+              src="src/assets/icons/CheckCircle.svg"
               alt="check-circle"
             />
             <div className="timer">{game.time}</div>
@@ -58,7 +58,7 @@ export function CardLastGamer() {
             </div>
             <img
               className="check-icon"
-              src="public/images/icons/InvalidCircle.svg"
+              src="src/assets/icons/InvalidCircle.svg"
               alt="check-circle"
             />
             <div className="timer">{game.time}s</div>

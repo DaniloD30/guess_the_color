@@ -5,6 +5,12 @@ export function HighScore() {
   const value = useGuessTheColorContext();
   const [highScore, setHighScore] = useState(0);
 
+  /* 
+ Lógica voltada a setar o valor do highScore:
+  - Pega o array de historico da rodada
+  - Verifica o score da ultima partida ou verifica se ja estava salvo um valor em localStorage
+  - Compara se é maior e seta no state HighScore
+  */
   useEffect(() => {
     if (
       !value.start &&

@@ -5,13 +5,17 @@ import { Score } from "./Score";
 import { RestartButton } from "./RestartButton";
 import { ProgressBar } from "../ProgressBar";
 import { useState } from "react";
+/* 
+ Container com os componentes responsaveis pelo tempo, botão de restart,
+ highscore, score, name
+  */
 export function BarScore() {
   const [timeContext, setTimeContext] = useState(100);
 
   const handleChangeTimeContext = (value) => {
     setTimeContext(value);
   };
-  
+
   return (
     <>
       <div className="containerBarScore">

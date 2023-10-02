@@ -6,7 +6,13 @@ export function RemaningTimes({ timeContext, setTimeContext }) {
   const value = useGuessTheColorContext();
 
   const { time, setTime } = useTimeRemaningContext();
-
+ /* 
+ Contador responsavel pelos 30 segundos, com logica voltas a:
+    - Iniciar o contador quando der play
+    - Restart dos dados, resetando o contador
+    - Setar o valor da barra de progresso, decrementando
+    - Finalização da rodada
+ */
   if (value.start) {
     let timeoutID = setTimeout(() => {
       if (value.restartButton) {

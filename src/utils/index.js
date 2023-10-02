@@ -1,3 +1,7 @@
+/* 
+Função para geração da cor branca ou preta, se 
+baseando pela brilho de cada cor gerada.
+*/
 export function getContrastColor(backgroundColor) {
     if (backgroundColor) {
       const r = parseInt(backgroundColor.slice(1, 3), 16);

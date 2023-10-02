@@ -10,7 +10,12 @@ import { useTimeRemaningContext } from "./TimeRemaningContext";
 import { useCurrentLatestGameContext } from "./CurrentLatestGameContext";
 
 export const GuessTheColorContext = createContext();
-
+/* 
+Contexto/hook, com o objetivo de ser o CORE do game,
+resposabilidades de pontuação, dificuldade, highscore,
+score, resetar dados, recuperar dados do localStorage,
+clear local Storage
+*/
 export function GuessTheColorProvider({
   initialValue,
   initialArrHistoric,
@@ -85,11 +90,20 @@ export function GuessTheColorProvider({
   const validateInitialValue = initialValueLocalStorage
     ? initialValueLocalStorage
     : initialArrHistoric;
+
+  /* 
+  Utilização do useReducer por conta da quantidade de tipos
+  de perdas e ganho de pontos, lógica muito similar as actions
+  do REDUX.
+  */
   const [arrHistoric, setArrHistoric] = useReducer(
     gameHistoric,
     validateInitialValue
   );
 
+  /* 
+  Função responsável para a lógica de acerto da cor
+  */
   const validationSelect = (selectColor) => {
     const hit = correctColor == selectColor && time > 0;
     const wrong = selectColor && correctColor !== selectColor && time !== 31;
@@ -119,6 +133,13 @@ export function GuessTheColorProvider({
     setReset(true);
   };
 
+  /*
+  Duas funções são responsaveis para a 
+  geração das cores hexadecimais aleatorias, 
+  que são a getRandomHexColor() e a generateRandomColorArray()
+  sendo essa ultima a responsavel pela lógica de guardar as cores
+  e um array e escolhendo aqui a cor "correta"
+  */
   function getRandomHexColor() {
     const letters = "0123456789ABCDEF";
     let color = "#";
@@ -169,6 +190,10 @@ export function GuessTheColorProvider({
     }
   }, [time]);
 
+  /* 
+  Utilização do useMemo para armazenar os valores, sem precisar
+  refazer para obter um resultado com o mesmo parâmetro anterior,
+  */
   const value = useMemo(
     () => ({
       generateRandomColorsArray,

@@ -16,6 +16,13 @@ function App() {
             display: "flex",
           }}
         >
+          {
+            /* 
+            Aqui tive a decisão de separar em dois componentes principais
+            o GuessTheColor que seria o CORE do game e a CurrentAndLatestGame
+            Que seria a barra a esquerda mostrando o histórico de cada rodada.
+            */
+          }
           <CurrentAndLatestGame />
           <GuessTheColor />
         </div>

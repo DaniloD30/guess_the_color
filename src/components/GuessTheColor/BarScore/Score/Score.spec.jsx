@@ -15,7 +15,6 @@ describe("Render Score", () => {
         <Score />
       </ContextsContainer>
     );
-    screen.logTestingPlaygroundURL();
     const score = screen.getByText(/score:/i);
     const valueScore = screen.getByText(/0/i);
     expect(score).toBeInTheDocument();

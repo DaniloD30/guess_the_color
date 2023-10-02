@@ -1,11 +1,15 @@
 import { useGuessTheColorContext } from "../../../contexts/GuessTheColorContext";
 import "./styles.css";
+/* 
+ Componente responsavel em renderizar os botoes
+ com as cores para o jogador acertar
+  */
 export function ButtonsGame() {
   const value = useGuessTheColorContext();
 
   const handleClick = (selected) => {
     value.validationSelect(selected);
-  };
+  }; 
 
   return (
     <>

@@ -4,6 +4,13 @@ import { ButtonsGame } from "./ButtonsGame";
 import { ResetAllData } from "./ResetAllData";
 
 export function GuessTheColor() {
+  /* 
+  Sempre com o pensamento de dividir para conquistar
+  Separei e modularizei nos componentes abaixo o core do GAME.
+  Foi muito interessante eu ter trabalhado dessa forma,
+  facilitou muito os testes únitarios
+  */
+
   return (
     <>
       <div

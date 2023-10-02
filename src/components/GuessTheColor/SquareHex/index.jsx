@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { useGuessTheColorContext } from "../../../contexts/GuessTheColorContext";
 import "./styles.css";
 import { getContrastColor } from "../../../utils";
+/* 
+ Componente responsavel em renderizar o quadrado com a cor que o jogador
+ deve acertar, além do formulario para iniciar a partidae
+  */
 export function SquareHex() {
   const value = useGuessTheColorContext();
   const initialValue = {

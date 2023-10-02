@@ -1,6 +1,7 @@
 import { useCurrentLatestGameContext } from "../../../contexts/CurrentLatestGameContext";
 import { getContrastColor } from "../../../utils";
-
+import CheckCircle from '../../../assets/icons/CheckCircle.png'
+import InvalidCircle from '../../../assets/icons/InvalidCircle.png'
 import "./styles.css";
 export function CardLastGamer() {
   const value = useCurrentLatestGameContext();
@@ -26,7 +27,7 @@ export function CardLastGamer() {
             </div>
             <img
               className="check-icon"
-              src="src/assets/icons/CheckCircle.png"
+              src={CheckCircle}
               alt="check-circle"
             />
             <div className="timer">{game.time}</div>
@@ -58,7 +59,7 @@ export function CardLastGamer() {
             </div>
             <img
               className="check-icon"
-              src="src/assets/icons/InvalidCircle.png"
+              src={InvalidCircle}
               alt="check-circle"
             />
             <div className="timer">{game.time}s</div>

@@ -1,25 +1,18 @@
 import { describe, it } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { ResetAllData } from ".";
-import { GuessTheColorProvider } from "../../../contexts/GuessTheColorContext";
-import { TimeRemaningProvider } from "../../../contexts/TimeRemaningContext";
-import { CurrentLatestGameProvider } from "../../../contexts/CurrentLatestGameContext";
+import { ContextsContainer } from "../../../contexts";
 
 describe("Render ResetAllData", () => {
   it("Render ResetAllData", () => {
+    const initialValue = {
+      start: false,
+      initialArrHistoric: { items: [] },
+    };
     render(
-      <TimeRemaningProvider>
-        <CurrentLatestGameProvider>
-          <GuessTheColorProvider
-            initialValue={{
-              start: false,
-              initialArrHistoric: { items: [] }
-            }}
-          >
-            <ResetAllData />
-          </GuessTheColorProvider>
-        </CurrentLatestGameProvider>
-      </TimeRemaningProvider>
+      <ContextsContainer initialValue={initialValue}>
+        <ResetAllData />
+      </ContextsContainer>
     );
     const button = screen.getByRole("button");
     fireEvent.click(button);

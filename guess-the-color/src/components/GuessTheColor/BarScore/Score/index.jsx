@@ -6,7 +6,7 @@ export function Score() {
   return (
     <>
       <div className="containerScore">
-        <div className="value-score">SCORE</div>
+        <div className="value-score">SCORE:</div>
         <div className="value-highscore">{value.score}</div>
       </div>
     </>

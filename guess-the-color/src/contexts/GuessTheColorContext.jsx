@@ -20,11 +20,15 @@ export function GuessTheColorProvider({
   const [isSelected, setIsSelected] = useState("");
   const [restartButton, setRestart] = useState(false);
   const [resetData, setReset] = useState(false);
-  const [correctColor, setCorrectColor] = useState();
+  const [correctColor, setCorrectColor] = useState("#FEEED8");
   const [score, setScore] = useState(0);
   const [colorsHex, setColorsHex] = useState(["#FEEED8"]);
-
+  const [objDate, setObjDate] = useState({
+    name: window.localStorage.getItem("name"),
+    difficulty: 0,
+  });
   const { time } = useTimeRemaningContext();
+  const valueGames = useCurrentLatestGameContext();
 
   const gameHistoric = (state, action) => {
     switch (action) {
@@ -81,13 +85,11 @@ export function GuessTheColorProvider({
   const validateInitialValue = initialValueLocalStorage
     ? initialValueLocalStorage
     : initialArrHistoric;
-  //TODO: o items do validateInitialValue vai vim da props do GuessTheColorProvider
-  //TODO: o correctColor vai vim da props do GuessTheColorProvider
   const [arrHistoric, setArrHistoric] = useReducer(
     gameHistoric,
     validateInitialValue
   );
-  const valueGames = useCurrentLatestGameContext();
+
   const validationSelect = (selectColor) => {
     const hit = correctColor == selectColor && time > 0;
     const wrong = selectColor && correctColor !== selectColor && time !== 31;
@@ -104,11 +106,18 @@ export function GuessTheColorProvider({
     }
   };
 
-  useEffect(() => {
-    if (start && time == 0) {
-      validationSelect();
-    }
-  }, [time]);
+  const resetAllData = () => {
+    setStart(false);
+    localStorage.removeItem("arrHistoric");
+    localStorage.removeItem("highScore");
+    localStorage.removeItem("name");
+    setObjDate({
+      name: "",
+      difficulty: 0,
+    });
+    setArrHistoric("RESET");
+    setReset(true);
+  };
 
   function getRandomHexColor() {
     const letters = "0123456789ABCDEF";
@@ -121,11 +130,19 @@ export function GuessTheColorProvider({
 
   function generateRandomColorsArray() {
     const colorsArray = [];
-    for (let i = 0; i < 3; i++) {
+    const countDificculty =
+      objDate.difficulty == 0 ? 3 : objDate.difficulty == 1 ? 4 : 5;
+    for (let i = 0; i < countDificculty; i++) {
       colorsArray.push(getRandomHexColor());
     }
     setColorsHex(colorsArray);
-    setCorrectColor(colorsArray[Math.floor(Math.random() * 3)]);
+    setCorrectColor(colorsArray[Math.floor(Math.random() * countDificculty)]);
+  }
+
+  function handleStart(objName) {
+    setStart(true);
+    setObjDate(objName);
+    window.localStorage.setItem("name", objName.name);
   }
 
   useEffect(() => {
@@ -146,13 +163,12 @@ export function GuessTheColorProvider({
     }
   }, [start]);
 
-  const resetAllData = () => {
-    setStart(false);
-    localStorage.removeItem("arrHistoric");
-    localStorage.removeItem("highScore");
-    setArrHistoric("RESET");
-    setReset(true);
-  };
+  useEffect(() => {
+    if (start && time == 31) {
+      validationSelect();
+    }
+  }, [time]);
+
   const value = useMemo(
     () => ({
       generateRandomColorsArray,
@@ -160,10 +176,13 @@ export function GuessTheColorProvider({
       start,
       setStart,
       setRestart,
+      handleStart,
       restartButton,
       setScore,
       score,
+      objDate,
       arrHistoric,
+      correctColor,
       setIsSelected,
       isSelected,
       resetAllData,
@@ -175,7 +194,10 @@ export function GuessTheColorProvider({
       colorsHex,
       start,
       setRestart,
+      handleStart,
+      correctColor,
       setScore,
+      objDate,
       resetData,
       setStart,
       restartButton,

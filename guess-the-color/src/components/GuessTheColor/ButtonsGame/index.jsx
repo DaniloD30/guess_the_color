@@ -1,7 +1,7 @@
 import { useGuessTheColorContext } from "../../../contexts/GuessTheColorContext";
 import "./styles.css";
 export function ButtonsGame() {
-  const  value  = useGuessTheColorContext();
+  const value = useGuessTheColorContext();
 
   const handleClick = (selected) => {
     value.validationSelect(selected);

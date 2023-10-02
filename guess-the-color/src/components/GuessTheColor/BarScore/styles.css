@@ -1,73 +1,87 @@
 .containerBarScore {
-    display: flex;
-    border: 1px solid;
-    border-radius: 10px;
-    min-height: 10px;
-    background-color: #eceff5;
-    width: 60%;
+  display: flex;
+  border: 1px solid;
+  border-radius: 10px;
+  min-height: 10px;
+  background-color: #eceff5;
+  width: 60%;
 }
 
 .remaning {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 33%;
 }
 
 .restartButton {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 33%;
 }
 
 .restartButton:hover {
-    background-color: #8290a3;
-    cursor: pointer;
+  background-color: #8290a3;
+  cursor: pointer;
 }
 .containerHighScore {
-    width: 33%;
-    height: 100%;
+  width: 33%;
+  height: 100%;
 }
 
 .row-containerHighScore {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 10px;
-    min-height: 35%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  min-height: 16%;
 }
-
+.row-containerName {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  min-height: 16%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 265px;
+}
 .highscore-title {
-    font-weight: 600;
-    margin-left: 10px;
+  font-weight: 600;
+  margin-left: 10px;
 }
 
 .value-highscore {
-    font-weight: 600;
-    margin-right: 10px;
+  font-weight: 600;
+  margin-right: 10px;
 }
 
+.value-name {
+  font-weight: 600;
+  margin-right: 10px;
+
+}
 .value-score {
-    font-weight: 600;
-    margin-left: 10px;
+  font-weight: 600;
+  margin-left: 10px;
 }
-
 
 .verticalSeparator {
-    border-left: 1px solid;
+  border-left: 1px solid;
 }
 
 .containerScore {
-    display: flex;
-    min-height: 50%;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  min-height: 50%;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .heading {
-    font-weight: 600;
+  font-weight: 600;
 }

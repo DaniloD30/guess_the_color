@@ -7,6 +7,7 @@ export function ResetAllData() {
       <div className="containerResetAllData">
         <button
           className="buttonResetAllData"
+          disabled={value.start}
           onClick={() => value.resetAllData()}
         >
           Reset All Data

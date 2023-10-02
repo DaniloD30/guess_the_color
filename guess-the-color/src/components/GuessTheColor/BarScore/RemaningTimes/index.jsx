@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "../styles.css";
 import { useGuessTheColorContext } from "../../../../contexts/GuessTheColorContext";
 import { useTimeRemaningContext } from "../../../../contexts/TimeRemaningContext";
@@ -38,7 +38,7 @@ export function RemaningTimes({ timeContext, setTimeContext }) {
     }
   }, [time]);
 
- 
+
   return (
     <>
       <div className="remaning">

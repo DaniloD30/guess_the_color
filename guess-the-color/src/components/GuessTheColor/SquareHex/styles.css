@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   height: 80%;
+  flex-direction: column;
 }
 
 .buttonStart {
@@ -12,4 +13,25 @@
   height: 50px;
   width: 100px;
   cursor: pointer;
+}
+
+.buttonName {
+  width: 100%;
+  background: #F5F8FA;
+  border: 1px solid #D3E2E5;
+  border-radius: 20px;
+  outline: none;
+  color: #5C8599;
+}
+
+.buttonSelect {
+  width: 100%;
+  background: #F5F8FA;
+  border: 1px solid #D3E2E5;
+  border-radius: 20px;
+  outline: none;
+  color: #5C8599;
+}
+.input-block {
+  margin-bottom: 30px;
 }

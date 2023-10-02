@@ -27,8 +27,6 @@ export function HighScore() {
     }
   }, [value.resetData]);
 
-
-
   return (
     <>
       <div className="row-containerHighScore">

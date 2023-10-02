@@ -21,7 +21,6 @@ describe("Render HighScore", () => {
         <HighScore />
       </ContextsContainer>
     );
-
     const value = screen.getByText(/0/i);
     const text = screen.getByText(/high score/i);
     const textName = screen.getByText(/name/i);
